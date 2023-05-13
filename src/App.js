@@ -23,15 +23,19 @@ class App extends Component{
           <Header/>
 
           <Switch>
+            
             <Route exact path="/">
               <India/>
             </Route>
+
             <Route path="/india">
               <India/>
             </Route>
+            
             <Route path="/world">
               <World/>
             </Route>
+          
           </Switch>
         </Router>
       </div>
