@@ -1,8 +1,21 @@
 import React,{Component} from 'react';
 import Card from 'react-bootstrap/Card';
 import Statedata from './Statedata';
+import axios from 'axios';
 
 class India extends Component{
+    constructor(){
+        super();
+        this.state = {
+            data : {}
+        }
+    }
+
+    componentDidMount(){
+        axios.get('https://corona.lmao.ninja/v2/countries/india').then(response=>{
+        this.setState({data:response.data});
+        });
+    }
     render(){
         return(
             <div className='row'>
@@ -16,9 +29,8 @@ class India extends Component{
                            <Card className='badge bg-primary' style={{ width: '18rem' }}>
                            <Card.Body className='text-center'>
                            <Card.Title>TOTAL CASES</Card.Title>
-                           <h3>18655</h3>
+                           <h3>{this.state.data.cases}</h3>
                            <Card.Text>
-                           [Today : 25]
                            </Card.Text>
                            </Card.Body>
                            </Card> 
@@ -27,9 +39,8 @@ class India extends Component{
                            <Card className='badge bg-warning' style={{ width: '18rem' }}>
                            <Card.Body className='text-center'>
                            <Card.Title>ACTIVE CASES</Card.Title>
-                           <h3>18655</h3>
+                           <h3>{this.state.data.active}</h3>
                            <Card.Text>
-                           [Today : 25]
                            </Card.Text>
                            </Card.Body>
                            </Card> 
@@ -38,9 +49,8 @@ class India extends Component{
                            <Card className='badge bg-success' style={{ width: '18rem' }}>
                            <Card.Body className='text-center'>
                            <Card.Title>RECOVERED</Card.Title>
-                           <h3>18655</h3>
+                           <h3>{this.state.data.recovered}</h3>
                            <Card.Text>
-                           [Today : 25]
                            </Card.Text>
                            </Card.Body>
                            </Card> 
@@ -49,9 +59,8 @@ class India extends Component{
                            <Card className='badge bg-danger' style={{ width: '18rem' }}>
                            <Card.Body className='text-center'>
                            <Card.Title>TOTAL DEATH</Card.Title>
-                           <h3>18655</h3>
+                           <h3>{this.state.data.deaths}</h3>
                            <Card.Text>
-                           [Today : 25]
                            </Card.Text>
                            </Card.Body>
                            </Card> 
